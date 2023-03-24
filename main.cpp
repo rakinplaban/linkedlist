@@ -39,7 +39,7 @@ class Linked_list
         location->data = val;
         tail->next = location;
         tail = location;
-        tail->next = NULL;
+        tail->next = NULL; // Why should I define tail->next to null. Shouldn't is be null autometically?
     }
 
     void display(){
