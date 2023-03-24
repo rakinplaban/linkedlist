@@ -17,14 +17,30 @@ class Linked_list
 //        Linked_list();
 //        virtual ~Linked_list();
     void insert_first(int val){
-        NodeType* location;
-        location = new NodeType;
+        NodeType* location;        // defining NodeType data pointer called location
+        location = new NodeType;   // memory allocation with new command.
         location->data = val;
         location->next = head;
         head = location;
     }
     void insert_middle();
-    void insert_end();
+    void insert_end(int val){
+        NodeType* location;
+        location = new NodeType;
+        NodeType* temp = new NodeType;
+        temp = head;
+        while(temp->next!=NULL){
+            temp = temp->next;
+        }
+        if(temp->next==NULL)
+            tail = temp;
+
+
+        location->data = val;
+        tail->next = location;
+        tail = location;
+        tail->next = NULL;
+    }
 
     void display(){
         NodeType *temp = new NodeType;
@@ -55,6 +71,9 @@ int main()
     obj.insert_first(48);
     obj.insert_first(78);
     obj.insert_first(68);
+    obj.insert_end(63);
+    obj.insert_end(65);
+    obj.insert_end(63);
     obj.display();
     return 0;
 }
