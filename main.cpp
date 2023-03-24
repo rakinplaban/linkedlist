@@ -23,7 +23,27 @@ class Linked_list
         location->next = head;
         head = location;
     }
-    void insert_middle();
+    // Insert middle
+    void insert_middle(int target,int val){
+        // target is the node data after which I'll add my new node.
+        // NodeType* targetNode = new NodeType;
+        NodeType* temp = new NodeType;
+        NodeType* location = new NodeType;
+        temp = head;
+
+        while(temp->next != NULL){
+            if(temp->data == target){
+                break;
+            }
+            temp = temp->next;
+        }
+
+        location->data = val;
+        location->next = temp->next;
+        temp->next = location;
+
+    }
+    // Insert last
     void insert_end(int val){
         NodeType* location;
         location = new NodeType;
@@ -74,6 +94,8 @@ int main()
     obj.insert_end(63);
     obj.insert_end(65);
     obj.insert_end(63);
+    obj.insert_middle(78,52);
+    obj.insert_middle(98,82);
     obj.display();
     return 0;
 }
