@@ -13,6 +13,7 @@ class Linked_list
         NodeType *head;
         NodeType *tail;
 
+
     public:
 //        Linked_list();
 //        virtual ~Linked_list();
@@ -26,7 +27,6 @@ class Linked_list
     // Insert middle
     void insert_middle(int target,int val){
         // target is the node data after which I'll add my new node.
-        // NodeType* targetNode = new NodeType;
         NodeType* temp = new NodeType;
         NodeType* location = new NodeType;
         temp = head;
@@ -60,6 +60,22 @@ class Linked_list
         tail->next = location;
         tail = location;
         tail->next = NULL; // Why should I define tail->next to null. Shouldn't is be null autometically?
+    }
+
+    int search_item(int target){
+        NodeType* temp = new NodeType;
+        NodeType* location = new NodeType;
+        temp = head;
+        int count_ = 0;
+        while(temp->next != NULL){
+            if(temp->data == target){
+                return count_ + 1;
+            }
+            temp = temp->next;
+            count_++;
+        }
+        // if not found.
+        return -1;
     }
 
     void display(){
@@ -97,5 +113,7 @@ int main()
     obj.insert_middle(78,52);
     obj.insert_middle(98,82);
     obj.display();
+    cout << endl;
+    cout <<obj.search_item(52)<<endl;
     return 0;
 }
