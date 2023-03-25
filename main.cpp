@@ -78,6 +78,25 @@ class Linked_list
         return -1;
     }
 
+    void delete_first(){
+        NodeType* temp;
+        temp = head;
+        head = temp->next;
+        delete temp;
+
+    }
+
+    void delete_last(){
+        NodeType* temp;
+        temp = head;
+        while(temp->next->next!=NULL){
+            temp = temp->next->next;
+        }
+        tail = temp;
+        delete tail->next;
+        tail->next = NULL;
+    }
+
     void display(){
         NodeType *temp = new NodeType;
         temp = head;
@@ -115,5 +134,11 @@ int main()
     obj.display();
     cout << endl;
     cout <<obj.search_item(52)<<endl;
+    obj.delete_first();
+    obj.display();
+    cout << endl;
+    obj.delete_last();
+    obj.display();
+    cout << endl;
     return 0;
 }
