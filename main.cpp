@@ -15,8 +15,7 @@ class Linked_list
 
 
     public:
-//        Linked_list();
-//        virtual ~Linked_list();
+    // Insert first
     void insert_first(int val){
         NodeType* location;        // defining NodeType data pointer called location
         location = new NodeType;   // memory allocation with new command.
@@ -61,10 +60,9 @@ class Linked_list
         tail = location;
         tail->next = NULL; // Why should I define tail->next to null. Shouldn't is be null autometically?
     }
-
+    // Search an item, Linear search.
     int search_item(int target){
         NodeType* temp = new NodeType;
-        NodeType* location = new NodeType;
         temp = head;
         int count_ = 0;
         while(temp->next != NULL){
@@ -77,7 +75,7 @@ class Linked_list
         // if not found.
         return -1;
     }
-
+    // Delete the first node.
     void delete_first(){
         NodeType* temp;
         temp = head;
@@ -85,7 +83,27 @@ class Linked_list
         delete temp;
 
     }
+    // Delete a node from the middle.
+    void delete_middle(int val){
+        NodeType* temp;
+        NodeType* temp1;
+        temp = head;
+        int flag = 0;
+        while(temp->next != NULL){
+            if(temp->next->data == val){
+                flag = 1;
+                break;
+            }
+            temp = temp->next;
+        }
+        if (flag==1){
+            temp1 = temp->next->next;
+            delete temp->next;
+            temp->next = temp1;
+        }
+    }
 
+    // Delete the last node.
     void delete_last(){
         NodeType* temp;
         temp = head;
@@ -138,6 +156,9 @@ int main()
     obj.display();
     cout << endl;
     obj.delete_last();
+    obj.display();
+    cout << endl;
+    obj.delete_middle(98);
     obj.display();
     cout << endl;
     return 0;
