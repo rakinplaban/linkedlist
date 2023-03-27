@@ -22,6 +22,10 @@ class Linked_list
         location->data = val;
         location->next = head;
         head = location;
+        if(head->next == NULL){
+            tail = location;
+        }
+
     }
     // Insert middle
     void insert_middle(int target,int val){
