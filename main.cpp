@@ -22,6 +22,10 @@ class Linked_list
         location->data = val;
         location->next = head;
         head = location;
+        if(head->next == NULL){
+            tail = location;
+        }
+
     }
     // Insert middle
     void insert_middle(int target,int val){
@@ -125,6 +129,19 @@ class Linked_list
             }
         }
     }
+    // Reverse
+    void reverse_list(){
+        NodeType* temp;
+        NodeType* previous = NULL;
+        NodeType* current = head;
+        while(current != NULL){
+            temp = current->next;
+            current->next = previous;
+            previous = current;
+            current = temp;
+        }
+        head = previous;
+    }
 
     Linked_list(){
         head = NULL;
@@ -161,5 +178,7 @@ int main()
     obj.delete_middle(98);
     obj.display();
     cout << endl;
+    obj.reverse_list();
+    obj.display();
     return 0;
 }
